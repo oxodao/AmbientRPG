@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Start soundtrack",
+        "type": "soundtrack",
+        "args": {
+            "iri": "/api/soundtracks/1"
+        }
+    },
+    {
+        "name": "Wait a bit",
+        "type": "sleep",
+        "args": {
+            "duration": 1000
+        }
+    },
+    {
+        "name": "Start soundtrack",
+        "type": "soundtrack",
+        "args": {
+            "iri": "/api/soundtracks/2"
+        }
+    },
+    {
+        "name": "Wait a bit",
+        "type": "sleep",
+        "args": {
+            "duration": 1000
+        }
+    }
+]

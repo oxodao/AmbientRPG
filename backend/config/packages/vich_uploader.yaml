@@ -1,0 +1,30 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        images:
+            uri_prefix: /images
+            upload_destination: '%base_dir%/images' # Served manuallj
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+ 
+        sound_effects:
+            uri_prefix: /sfx
+            upload_destination: '%base_dir%/sfx' # Served manually
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        soundtracks:
+            uri_prefix: /soundtracks
+            upload_destination: '%base_dir%/soundtracks' # Served manually
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true

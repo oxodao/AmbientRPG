@@ -1,0 +1,10 @@
+framework:
+    secret: '%env(APP_SECRET)%'
+
+    trusted_proxies: '%env(TRUSTED_PROXIES)%'
+    trusted_hosts: '%env(TRUSTED_HOSTS)%'
+    trusted_headers: [ 'x-forwarded-for', 'x-forwarded-proto' ]
+
+when@test:
+    framework:
+        test: true

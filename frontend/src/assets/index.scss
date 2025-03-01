@@ -1,0 +1,213 @@
+* {
+    box-sizing: border-box;
+}
+
+a, .dv-default-tab-content {
+    font-family: 'Open Sans';
+}
+
+html, body, #root {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.fullsize {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.fullsize__inner {
+    align-self: stretch;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.bgImage {
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+}
+
+.displayedImages {
+    position: absolute;
+    top: 2em;
+    left: 2em;
+    width: calc(100% - 4em);
+    height: calc(100% - 4em);
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+
+    gap: 2em;
+
+    z-index: 999;
+
+    img {
+        display: block;
+        flex: 1;
+        min-width: 0;
+        max-width: 80%;
+        max-height: 80%;
+        object-fit: contain;
+    }
+}
+
+.creatableList {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    ul {
+        flex: 1;
+        overflow-y: auto;
+    }
+}
+
+.createField {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: .75em;
+    gap: .5em;
+
+    input, .MuiTextField-root {
+        flex: 1;
+    }
+}
+
+.inlineIcons {
+    display: flex;
+    flex-direction: row;
+    gap: .25em;
+    align-items: center;
+}
+
+/**
+ * Not sure why it isn't the default or
+ * if I fucked something up
+ **/
+.dv-content-container {
+    overflow-y: auto;
+}
+
+/** Hacks to do properly **/
+.MuiListItemIcon-root {
+    min-width: 0 !important;
+}
+
+/** MDX EDITOR HACK **/
+
+.mdxeditor {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .mdxeditor-toolbar {
+        min-height: 44px;
+    }
+
+    .mdxeditor-root-contenteditable {
+        flex: 1;
+        overflow-y: scroll;
+
+        >div {
+            height: 100%;
+        }
+    }
+}
+
+.fullsizeEditor {
+    height: 100%;
+}
+
+/** MDXEDITOR THEME **/
+@import url('@radix-ui/colors/tomato-dark.css');
+@import url('@radix-ui/colors/mauve-dark.css');
+
+.dark-editor {
+  --accentBase: var(--tomato-1);
+  --accentBgSubtle: var(--tomato-2);
+  --accentBg: var(--tomato-3);
+  --accentBgHover: var(--tomato-4);
+  --accentBgActive: var(--tomato-5);
+  --accentLine: var(--tomato-6);
+  --accentBorder: var(--tomato-7);
+  --accentBorderHover: var(--tomato-8);
+  --accentSolid: var(--tomato-9);
+  --accentSolidHover: var(--tomato-10);
+  --accentText: var(--tomato-11);
+  --accentTextContrast: var(--tomato-12);
+
+  --baseBase: var(--mauve-1);
+  --baseBgSubtle: var(--mauve-2);
+  --baseBg: var(--mauve-3);
+  --baseBgHover: var(--mauve-4);
+  --baseBgActive: var(--mauve-5);
+  --baseLine: var(--mauve-6);
+  --baseBorder: var(--mauve-7);
+  --baseBorderHover: var(--mauve-8);
+  --baseSolid: var(--mauve-9);
+  --baseSolidHover: var(--mauve-10);
+  --baseText: var(--mauve-11);
+  --baseTextContrast: var(--mauve-12);
+
+  --admonitionTipBg: var(--cyan-9);
+  --admonitionTipBorder: var(--cyan-12);
+  
+  --admonitionInfoBg: var(--grass-9);
+  --admonitionInfoBorder: var(--grass-12);
+
+  --admonitionCautionBg: var(--amber-9);
+  --admonitionCautionBorder: var(--amber-12);
+
+  --admonitionDangerBg: var(--red-9);
+  --admonitionDangerBorder: var(--red-12);
+
+  --admonitionNoteBg: var(--mauve-9);
+  --admonitionNoteBorder: var(--mauve-12);
+
+  --radius-medium: 0 0 var(--spacing-1_5) var(--spacing-1_5);
+
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  color: var(--baseText);
+
+  --basePageBg: transparent;
+  background: var(--basePageBg);
+
+  blockquote {
+    border-left: 3px solid white;
+    margin: .5em;
+    padding: .5em;
+  }
+}
+
+.playerDisplayList {
+    position: fixed;
+    top: 0;
+    left: 2em;
+}
+
+.playerDisplay {
+    margin: 0;
+    padding: 0;
+    background: red;
+    padding: .5em;
+    min-width: 8em;
+}

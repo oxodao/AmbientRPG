@@ -1,0 +1,23 @@
+api_platform:
+    title: Ambient TTRPG
+    version: 1.0.0
+    
+    mercure:
+        include_type: true
+        
+    defaults:
+        stateless: true
+        skip_null_values: false
+        pagination_enabled: false
+        cache_headers:
+            vary: ['Content-Type', 'Authorization', 'Origin']
+            
+    formats:
+        jsonld: ['application/ld+json']
+        json: ['application/json']
+        multipart: ['multipart/form-data']
+
+    mapping:
+        paths:
+            - '%kernel.project_dir%/src/ApiResource'
+            - '%kernel.project_dir%/src/Entity'

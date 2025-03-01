@@ -1,0 +1,8 @@
+mercure:
+    hubs:
+        default:
+            url: 'https://localhost/.well-known/mercure' # Runs in the same container so no need to have a separate url, this probably will have to be set once we do static builds but meh
+            public_url: 'https://localhost/.well-known/mercure' # We don't care, our app guesses it by itself
+            jwt:
+                secret: '%env(MERCURE_PUBLISHER_JWT_KEY)%'
+                publish: '*'

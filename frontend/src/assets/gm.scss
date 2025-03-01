@@ -1,0 +1,40 @@
+.topbar {
+    padding: .5em 1em;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: stretch;
+    justify-content: space-between;
+    gap: 1em;
+
+    .buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.settingsPage {
+    display: flex;
+    flex-direction: column;
+
+    margin: 1em auto;
+    width: 20%;
+
+    gap: 1em;
+}
+
+.elementList {
+    display: flex;
+    flex-direction: column;
+
+    .list {
+        flex: 1;
+        overflow-y: auto;
+    }
+}
+
+.dv-react-part {
+    overflow-y: auto;
+}

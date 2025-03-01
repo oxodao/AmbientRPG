@@ -1,0 +1,7 @@
+/.env
+/helm/api-platform/charts/*
+!/helm/api-platform/charts/.gitignore
+backend/public/images/*
+/dist
+/data
+contrib/data

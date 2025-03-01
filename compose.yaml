@@ -1,0 +1,52 @@
+services:
+  app:
+    image: 'ambientrpg-php'
+    build:
+      context: './backend'
+      target: 'frankenphp_dev'
+    restart: 'unless-stopped'
+    tty: true
+    environment:
+      APP_BASE_DIR: '/app_data'
+      SERVER_NAME: 'http://localhost, https://localhost, php:80'
+      TRUSTED_PROXIES: '127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16'
+      TRUSTED_HOSTS: '^localhost|php$$'
+      MERCURE_PUBLISHER_JWT_KEY: '!ChangeThisMercureHubJWTSecretKey!'
+      MERCURE_SUBSCRIBER_JWT_KEY: '!ChangeThisMercureHubJWTSecretKey!'
+      MERCURE_EXTRA_DIRECTIVES: |
+        cors_origins http://localhost:5173
+        demo
+      XDEBUG_MODE: "${XDEBUG_MODE:-off}"
+    volumes:
+      - 'caddy_data:/data'
+      - 'caddy_config:/config'
+      - './backend:/app'
+      - './data:/app_data'
+      - './backend/frankenphp/Caddyfile:/etc/caddy/Caddyfile:ro'
+      - './backend/frankenphp/conf.d/app.dev.ini:/usr/local/etc/php/conf.d/app.dev.ini:ro'
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    ports:
+      - '80:80/tcp'
+      - '443:443/tcp'
+      - '443:443/udp'
+
+  frontend:
+    image: 'node:lts'
+    init: true
+    user: "${UID:-1000}:${GID:-1000}"
+    working_dir: '/app'
+    command: [ 'bash', '-c', '[ ! -d node_modules ] && npm install; npm run dev -- --host' ]
+    volumes:
+      - './frontend:/app'
+    ports:
+      - '127.0.0.1:5173:5173'
+
+volumes:
+  caddy_data:
+  caddy_config:
+
+###> doctrine/doctrine-bundle ###
+###< doctrine/doctrine-bundle ###
+###> symfony/mercure-bundle ###
+###< symfony/mercure-bundle ###

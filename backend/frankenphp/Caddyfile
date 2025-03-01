@@ -1,0 +1,30 @@
+{
+	frankenphp
+	local_certs
+}
+
+{$SERVER_NAME} {
+	encode zstd br gzip
+
+	handle /.well-known/* {
+		mercure {
+			transport_url bolt:///data/mercure.db
+			publisher_jwt {env.MERCURE_PUBLISHER_JWT_KEY} HS256
+			subscriber_jwt {env.MERCURE_SUBSCRIBER_JWT_KEY} HS256
+			write_timeout 0s
+			metrics_enabled false # FUCK YOU MECURE
+		}
+	}
+
+	handle /api/* {
+		root * /app/public
+		vulcain
+		php_server
+	}
+
+	handle {
+		root * /frontend
+		try_files {path} /index.html
+		file_server
+	}
+}

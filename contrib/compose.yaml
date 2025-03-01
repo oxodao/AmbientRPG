@@ -1,0 +1,36 @@
+services:
+  app:
+    image: 'ambientrpg:latest'
+    restart: 'unless-stopped'
+    tty: true
+    environment:
+      # You can customize those, but this should not be needed
+      APP_BASE_DIR: '/app_data'
+      MERCURE_PUBLISHER_JWT_KEY: '!ChangeThisMercureHubJWTSecretKey!'
+      MERCURE_SUBSCRIBER_JWT_KEY: '!ChangeThisMercureHubJWTSecretKey!'
+      # Those should probably be kept as-is
+      SERVER_NAME: 'http://localhost, https://localhost, http://app, https://app'
+      TRUSTED_PROXIES: '127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16'
+      TRUSTED_HOSTS: '^localhost|app$$'
+    volumes:
+      - './data:/app_data'
+    ports:
+      - '80:80/tcp'
+      - '443:443/tcp'
+      - '443:443/udp'
+    healthcheck:
+      test: [ 'CMD', 'curl', '-f', 'http://localhost/api/state' ]
+      start_period: '30s'
+      interval: '10s'
+      timeout: '5s'
+      
+  sidecar:
+    image: 'ambientrpg:latest'
+    restart: 'unless-stopped'
+    tty: true
+    entrypoint: '/usr/bin/sidecar'
+    depends_on:
+      app:
+        condition: service_healthy
+    volumes:
+      - './data:/app_data'

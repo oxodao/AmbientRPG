@@ -1,0 +1,11 @@
+{
+    "server": {
+        "url": "http://localhost"
+    },
+    "mqtt": {
+        "host": "",
+        "port": 1883,
+        "username": "ambientrpg",
+        "password": ""
+    }
+}

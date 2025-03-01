@@ -1,0 +1,17 @@
+parameters:
+    env(APP_BASE_DIR): '/app_data'
+    base_dir: '%env(resolve:APP_BASE_DIR)%'
+
+    config_file: '%base_dir%/config.json'
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'

@@ -1,0 +1,25 @@
+[
+    {
+        "name": "Trigger the combat sound effect",
+        "type": "sfx",
+        "args": {
+            "iri": "/api/sound_effects/1"
+        }
+    },
+    {
+        "name": "Start soundtrack",
+        "type": "soundtrack",
+        "args": {
+            "iri": "/api/soundtracks/1"
+        }
+    },
+    {
+        "name": "Set the lights",
+        "type": "set_light",
+        "args": {
+            "device_names": ["canap_ledstrip", "bureau_ledstrip", "meubletv_ledstrip"],
+            "color": "FF0000",
+            "brightness": 254
+        }
+    }
+]
