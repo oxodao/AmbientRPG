@@ -1,7 +1,7 @@
-import { Button, Card, CardContent, Slider, Stack, Typography } from "@mui/material";
+import { Card, CardContent, Slider, Stack, Typography } from "@mui/material";
 import { useAppProps } from "../../../context";
 import { useEffect, useRef, useState } from "react";
-import { IconMusic, IconPlus, IconVolume } from "@tabler/icons-react";
+import { IconVolume } from "@tabler/icons-react";
 import ElementList from "../element_list";
 import ElementContext from "../element_context";
 import Soundtrack from "../../../sdk/responses/soundtrack";
