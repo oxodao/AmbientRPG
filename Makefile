@@ -51,4 +51,4 @@ tests:
 	@docker compose exec app bin/phpunit
 
 release:
-	@docker build --no-cache -t ambientrpg:latest .
+	@docker build --no-cache -t oxodao/ambientrpg:latest .
