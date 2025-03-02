@@ -58,12 +58,6 @@ export default function OstList() {
         }
     }, [volume]);
 
-    if (campaign?.soundtracks.length === 0) {
-        return <Stack>
-            <Typography align="center" mt={3}>Aucune soundtrack</Typography>
-        </Stack>
-    }
-
     return <Stack direction="column" gap={1}>
         <Card>
             <CardContent>

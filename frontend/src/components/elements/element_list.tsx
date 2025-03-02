@@ -48,7 +48,7 @@ export default function ElementList({
 
     return <div className="elementList">
         {
-            (showSearch === undefined || showSearch)
+        (showSearch === undefined || showSearch)
             && <div className="createField" style={{ padding: 0 }}>
                 <TextField
                     value={search}
