@@ -2,6 +2,7 @@ package effects
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/oxodao/ambientrpg/ambientclient"
 	"github.com/oxodao/ambientrpg/mosquitto"
@@ -19,7 +20,19 @@ type SetLightEffect struct {
 }
 
 func (effect SetLightEffect) String() string {
-	return fmt.Sprintf("SetLightEffect[device=%v, color=%v, brightness=%v]", effect.Args.DeviceName, effect.Args.Color, effect.Args.Brightness)
+	devices := []string{}
+
+	if len(effect.Args.DeviceName) > 0 {
+		devices = append(devices, effect.Args.DeviceName)
+	}
+
+	if len(effect.Args.DeviceNames) > 0 {
+		devices = append(devices, effect.Args.DeviceNames...)
+	}
+
+	deviceNames := "(" + strings.Join(devices, ", ") + ")"
+
+	return fmt.Sprintf("SetLightEffect[device=%v, color=%v, brightness=%v]", deviceNames, effect.Args.Color, effect.Args.Brightness)
 }
 
 func (effect SetLightEffect) IsPhpEffect() bool {

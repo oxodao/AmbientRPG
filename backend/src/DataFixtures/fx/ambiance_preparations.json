@@ -1,0 +1,18 @@
+[
+    {
+        "name": "Set V soundtrack",
+        "type": "soundtrack",
+        "args": {
+            "iri": "/api/soundtracks/5"
+        }
+    },
+    {
+        "name": "Set yellow color",
+        "type": "set_light",
+        "args": {
+            "device_names": ["bureau_ledstrip", "canap_ledstrip", "meubletv_ledstrip"],
+            "color": "#FFFF00", 
+            "brightness": 254
+        }
+    }
+]

@@ -1,0 +1,25 @@
+[
+    {
+        "name": "Set RED color",
+        "type": "set_light",
+        "args": {
+            "device_names": [ "bureau_ledstrip", "canap_ledstrip", "meubletv_ledstrip" ],
+            "color": "#FF0000",
+            "brightness": 254
+        }
+    },
+    {
+        "name": "Play combat SFX",
+        "type": "sfx",
+        "args": {
+            "iri": "/api/sound_effects/2"
+        }
+    },
+    {
+        "name": "Set Combat soundtrack",
+        "type": "soundtrack",
+        "args": {
+            "iri": "/api/soundtracks/4"
+        }
+    }
+]

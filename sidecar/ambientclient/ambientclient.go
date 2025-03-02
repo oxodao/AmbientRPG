@@ -149,6 +149,8 @@ func (ac *AmbientClient) listenMercure(mercureEffectsHandler func(msg *sse.Event
 				return
 			}
 
+			fmt.Println("New state received")
+
 			ac.State = state
 		})
 	}()
@@ -158,6 +160,8 @@ func (ac *AmbientClient) listenMercure(mercureEffectsHandler func(msg *sse.Event
 			if string(msg.Event) != "/effects" {
 				return
 			}
+
+			fmt.Println("New effects received")
 
 			mercureEffectsHandler(msg)
 		})

@@ -1,0 +1,18 @@
+[
+    {
+        "name": "Set standard soundtrack",
+        "type": "soundtrack",
+        "args": {
+            "iri": "/api/soundtracks/1"
+        }
+    },
+    {
+        "name": "Set white-ish color",
+        "type": "set_light",
+        "args": {
+            "device_names": ["bureau_ledstrip", "canap_ledstrip", "meubletv_ledstrip"],
+            "color": "#FFFDD0",
+            "brightness": 254
+        }
+    }
+]

@@ -9,6 +9,7 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use App\Interface\HasCampaignInterface;
+use App\Repository\CampaignRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -35,7 +36,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         AbstractNormalizer::GROUPS => [self::API_GET_ITEM, Image::API_GET_ITEM, SoundEffect::API_GET_ITEM, Character::API_GET_ITEM, EffectSet::API_GET_ITEM],
     ],
 )]
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: CampaignRepository::class)]
 class Campaign implements HasCampaignInterface
 {
     public const string API_GET_ITEM = 'api:campaigns:get';

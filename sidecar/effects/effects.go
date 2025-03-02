@@ -30,6 +30,8 @@ type Effect interface {
 	IsPhpEffect() bool
 	Do() error
 	GetAlteredState(state ambientclient.State) ambientclient.State
+
+	String() string
 }
 
 func Execute(effects []Effect) error {
@@ -85,6 +87,8 @@ func ParseEffectsFromFile(filename string) ([]Effect, error) {
 }
 
 func ParseEffects(raw []byte) ([]Effect, error) {
+	fmt.Println("Parsing effects...")
+
 	var actions []json.RawMessage
 
 	err := json.Unmarshal(raw, &actions)
@@ -101,6 +105,7 @@ func ParseEffects(raw []byte) ([]Effect, error) {
 			return nil, err
 		}
 
+		fmt.Println("\t- " + effect.String())
 		effects = append(effects, effect)
 	}
 
