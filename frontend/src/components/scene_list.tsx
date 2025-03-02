@@ -35,7 +35,7 @@ export default function CampaignSceneList() {
         <List>
             <ListItem key="root">
                 <ListItemButton onClick={() => selectScene(null)} selected={!selectedScene}>
-                    <ListItemText primary="- Campagne -" sx={{my: 0}} />
+                    <ListItemText primary="- Campagne -" sx={{ my: 0 }} />
                 </ListItemButton>
             </ListItem>
 
@@ -55,7 +55,7 @@ export default function CampaignSceneList() {
                         onClick={() => selectScene(x)}
                         selected={!!selectedScene && selectedScene.iri === x.iri}
                     >
-                        <ListItemText primary={x.name} sx={{my: 0}} />
+                        <ListItemText primary={x.name} sx={{ my: 0 }} />
                     </ListItemButton>
                 </ListItem>)
             }
@@ -64,7 +64,16 @@ export default function CampaignSceneList() {
         {
             editorMode
             && <div className="createField">
-                <TextField value={createName} onChange={x => setCreateName(x.target.value)} size="small" />
+                <TextField
+                    value={createName}
+                    size="small"
+                    onChange={x => setCreateName(x.target.value)}
+                    onKeyDown={e => {
+                        if (e.key === 'Enter' && createName.length > 0) {
+                            createScene();
+                        }
+                    }}
+                />
                 <IconButton onClick={createScene} disabled={createName.length === 0}>
                     <IconPlus size={18} />
                 </IconButton>
