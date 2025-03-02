@@ -1,7 +1,14 @@
 import { Button, Card, CardContent, Slider, Stack, Typography } from "@mui/material";
 import { useAppProps } from "../../../context";
 import { useEffect, useRef, useState } from "react";
-import { IconVolume } from "@tabler/icons-react";
+import { IconMusic, IconPlus, IconVolume } from "@tabler/icons-react";
+import ElementList from "../element_list";
+import ElementContext from "../element_context";
+import Soundtrack from "../../../sdk/responses/soundtrack";
+import OstElementRenderer from "./ost_list_item_renderer";
+import CreateSoundtrackModal from "./create_soundtrack";
+import DeleteSoundtrackModal from "./delete_soundtrack";
+import EditSoundtrackModal from "./edit_soundtrack";
 
 /**
  * Crappy ass component but it does the job
@@ -9,12 +16,30 @@ import { IconVolume } from "@tabler/icons-react";
  */
 
 export default function OstList() {
-    const { campaign, playingSoundtrack, sendState } = useAppProps();
+    const { campaign, playingSoundtrack, sendState, sdk } = useAppProps();
     const [currentSong, setCurrentSong] = useState<string | null>(playingSoundtrack);
     const [songStatuses, setSongStatuses] = useState<Record<string, number>>({});
     const [volume, setVolume] = useState<number>(.2);
 
+    const [editedSoundtrack, setEditedSoundtrack] = useState<Soundtrack | null>(null);
+    const [removedSoundtrack, setRemovedSoundtrack] = useState<Soundtrack | null>(null);
+    const [isCreatingSoundtrack, setCreatingSoundtrack] = useState<boolean>(false);
+
     const audioRef = useRef<HTMLAudioElement>(null);
+
+    const fetchSoundtracks = async () => {
+        if (!campaign) {
+            return [];
+        }
+
+        const data = await sdk.soundtracks.getCollection(campaign);
+
+        if (!data) {
+            return [];
+        }
+
+        return data.items || [];
+    }
 
     useEffect(() => {
         if (currentSong) {
@@ -88,16 +113,33 @@ export default function OstList() {
         </Card>
 
         {
-            campaign && <>
-                {
-                    ...campaign.soundtracks.map(x => <Button
-                        onClick={() => sendState({ playingSoundtrack: x.iri })}
-                        disabled={currentSong === x.iri}
-                    >
-                        {x.name}
-                    </Button>)
-                }
-            </>
+            campaign
+            && <ElementList
+                emptyText={"Aucune soundtrack"}
+                fetchElements={fetchSoundtracks}
+                onClick={x => sendState({ playingSoundtrack: x.iri })}
+                secondaryAction={x => <ElementContext
+                    displayed={[]}
+                    element={x}
+                    hideElement={() => { }}
+                    setEditedElement={x => setEditedSoundtrack(x as Soundtrack | null)}
+                    setRemovedElement={x => setRemovedSoundtrack(x as Soundtrack | null)}
+                />}
+                onClickCreate={() => setCreatingSoundtrack(true)}
+                itemRenderer={(x, onClick, secondaryAction) => <OstElementRenderer
+                    element={x}
+                    onClick={onClick}
+                    secondaryAction={secondaryAction}
+                />}
+                showSearch={false}
+            />
         }
+
+        {isCreatingSoundtrack && <CreateSoundtrackModal close={() => setCreatingSoundtrack(false)} />}
+        {removedSoundtrack && <DeleteSoundtrackModal soundtrack={removedSoundtrack} close={() => setRemovedSoundtrack(null)} />}
+        {editedSoundtrack && <EditSoundtrackModal soundtrack={editedSoundtrack} close={() => {
+            setEditedSoundtrack(null);
+            // ??? I dont remember how to tell the list to refresh
+        }} />}
     </Stack>
 }

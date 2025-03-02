@@ -1,9 +1,10 @@
-import { Button, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, TextField, Typography } from "@mui/material";
+import { Button, IconButton, List, TextField, Typography } from "@mui/material";
 import { useAsyncEffect } from "ahooks";
 import { ReactNode, useState } from "react";
 import { useAppProps } from "../../context";
 import { IconPlus } from "@tabler/icons-react";
 import { Element } from "../../sdk/responses/element";
+import StandardElementRenderer from "./standard_element_renderer";
 
 type Props = {
     emptyText: string;
@@ -13,17 +14,13 @@ type Props = {
     secondaryAction?: (image: any) => ReactNode;
     onClickCreate?: () => void;
     icon?: (e: Element) => ReactNode | null;
+    itemRenderer?: (
+        element: Element,
+        onClick: (elt: Element) => void,
+        secondaryAction?: (image: any) => ReactNode,
+        icon?: (e: Element) => ReactNode | null,
+    ) => ReactNode;
 };
-
-function ListIcon({ iconMethod, element }: { iconMethod: null | ((e: Element) => ReactNode | null), element: Element }) {
-    if (!iconMethod) {
-        return null;
-    }
-
-    return <ListItemIcon>
-        {iconMethod(element)}
-    </ListItemIcon>;
-}
 
 export default function ElementList({
     fetchElements,
@@ -33,6 +30,7 @@ export default function ElementList({
     secondaryAction,
     onClickCreate,
     icon,
+    itemRenderer,
 }: Props) {
     const { campaign, selectedScene, editorMode } = useAppProps();
     const [elements, setElements] = useState<Element[]>([]);
@@ -77,15 +75,19 @@ export default function ElementList({
                 elements.length > 0
                 && <List>
                     {
-                        elements.map(x =>
-                            <ListItem key={x.iri} secondaryAction={secondaryAction ? secondaryAction(x) : <></>}>
-                                <ListIcon iconMethod={icon ?? null} element={x} />
-
-                                <ListItemButton onClick={() => onClick(x)}>
-                                    <ListItemText primary={x.name} sx={{my: 0}} />
-                                </ListItemButton>
-                            </ListItem>
+                        !itemRenderer
+                        && elements.map(x =>
+                            <StandardElementRenderer
+                                element={x}
+                                onClick={onClick}
+                                secondaryAction={secondaryAction}
+                                icon={icon}
+                            />
                         )
+                    }
+                    {
+                        itemRenderer
+                        && elements.map(x => itemRenderer(x, onClick, secondaryAction, icon))
                     }
                 </List>
             }

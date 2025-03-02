@@ -27,6 +27,7 @@ Though it's built running the [FrankenPHP](https://frankenphp.dev) server, so my
   - [ ] Dés
   - [ ] Liste de compétences qui existent (Sous menu de ctrl+p)
   - [ ] Générateur de nom
+  - [ ] Générateur de loot
 - Faire un système de duplication de campagne
   - Faut que ça puisse dupliquer sur une campagne existante (ex: j'ai ajouté une scène à un groupe, je veux la dupliquer sur les autres groupes pour qu'ils l'aient aussi, à définir)
 
@@ -49,7 +50,7 @@ Todos:
   - [x] Per-characters notes
   - [ ] More stuff, idk
 - [ ] Toolbox (Ctrl+P)
-  - [ ] Calculator
+  - [x] Calculator
   - [ ] Dices
   - [ ] NPC Name generator
   - [ ] Loot generator

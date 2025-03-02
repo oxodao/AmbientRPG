@@ -8,8 +8,8 @@ type Props = {
     element: Element;
 
     hideElement: (iri: string) => void;
-    setEditedElement: (e: Element) => void;
-    setRemovedElement: (e: Element) => void;
+    setEditedElement: (e: Element|null) => void;
+    setRemovedElement: (e: Element|null) => void;
 };
 
 export default function ElementContext({displayed, element, hideElement, setEditedElement, setRemovedElement}: Props) {
