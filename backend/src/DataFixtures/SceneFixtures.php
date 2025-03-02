@@ -54,14 +54,15 @@ NOTES;
     public function load(ObjectManager $manager): void
     {
         foreach(['campaign_1', 'campaign_2', 'campaign_3'] as $campaign) {
+            // Out of order just to be sure that this is not sorted on ID
             $this->createScene($manager, $campaign, '0 - Présentation univers', self::CP77_PRESENTATION_NOTES);
             $this->createScene($manager, $campaign, '1 - Funérailles');
-            $this->createScene($manager, $campaign, '2 - Discussion au bar');
-            $this->createScene($manager, $campaign, '3 - NCPD');
-            $this->createScene($manager, $campaign, '4 - RDV Fixer');
-            $this->createScene($manager, $campaign, '5 - Confrontation vendeur');
-            $this->createScene($manager, $campaign, '6 - Détourner un AV');
             $this->createScene($manager, $campaign, '7 - Infiltration');
+            $this->createScene($manager, $campaign, '2 - Discussion au bar');
+            $this->createScene($manager, $campaign, '6 - Détourner un AV');
+            $this->createScene($manager, $campaign, '3 - NCPD');
+            $this->createScene($manager, $campaign, '5 - Confrontation vendeur');
+            $this->createScene($manager, $campaign, '4 - RDV Fixer');
             $this->createScene($manager, $campaign, '8 - Payday!');
         }
 

@@ -75,6 +75,7 @@ class Campaign implements HasCampaignInterface
     #[Groups([
         self::API_GET_ITEM,
     ])]
+    #[ORM\OrderBy(['name' => 'ASC'])]
     private Collection $scenes;
 
     #[ORM\OneToMany(targetEntity: Image::class, mappedBy: 'campaign')]
