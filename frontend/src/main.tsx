@@ -1,22 +1,24 @@
-import { HashRouter, Route, Routes } from 'react-router-dom'
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import ViewerPage from './pages/viewer'
-import IndexPage from './pages'
-import AppProvider from './context'
-import GameMaster from './pages/game_master'
-import SettingsPage from './pages/game_master/settings'
-import { SnackbarProvider } from 'notistack'
+import { HashRouter, Route, Routes } from 'react-router-dom';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import ViewerPage from './pages/viewer';
+import IndexPage from './pages';
+import AppProvider from './context';
+import GameMaster from './pages/game_master';
+import SettingsPage from './pages/game_master/settings';
+import { SnackbarProvider } from 'notistack';
 import Cookies from 'js-cookie';
-import GameMasterLayout from './pages/game_master/layout'
-import { createTheme, ThemeProvider } from '@mui/material'
+import GameMasterLayout from './pages/game_master/layout';
+import CampaignsPage from './pages/game_master/campaigns';
+import { createTheme, ThemeProvider } from '@mui/material';
 
 import 'dockview-core/dist/styles/dockview.css';
 import "@fontsource/open-sans/400.css";
-import '@mdxeditor/editor/style.css'
-import './assets/cp77.scss'
-import './assets/index.scss'
-import CampaignsPage from './pages/game_master/campaigns'
+import '@mdxeditor/editor/style.css';
+
+import './assets/cp77.scss';
+import './assets/index.scss';
+import './assets/viewer.scss';
 
 
 fetch('/api/mercure-token').then(resp => resp.json().then(data => {

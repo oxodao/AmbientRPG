@@ -1,5 +1,12 @@
 [
     {
+        "name": "Play combat SFX",
+        "type": "sfx",
+        "args": {
+            "iri": "/api/sound_effects/2"
+        }
+    },
+    {
         "name": "Set RED color",
         "type": "set_light",
         "args": {
@@ -9,11 +16,11 @@
         }
     },
     {
-        "name": "Play combat SFX",
-        "type": "sfx",
-        "args": {
-            "iri": "/api/sound_effects/2"
-        }
+      "name": "Sleep",
+      "type": "sleep",
+      "args": {
+        "duration": 500
+      }
     },
     {
         "name": "Set Combat soundtrack",
