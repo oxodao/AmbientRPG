@@ -61,6 +61,26 @@ class ImageFixtures extends Fixture implements DependentFixtureInterface
             }
         }
 
+        $i = 0;
+        foreach (['fallout/0.jpg', 'fallout/1.jpg', 'fallout/2.jpg'] as $falloutBg) {
+            $image = (new Image())
+                ->setName(\sprintf("Background #%s", $i))
+                ->setCampaign($this->getReference('campaign_5', Campaign::class))
+                ->setBackground(true)
+                ->setFile(new ReplacingFile(Path::join(
+                    $this->projectDir,
+                    'src',
+                    'DataFixtures',
+                    'images',
+                    $falloutBg,
+                )));
+
+            $manager->persist($image);
+            $manager->flush();
+
+            $i++;
+        }
+
         foreach ($sceneImages as $fixtureSceneImage) {
             foreach($fixtureSceneImage['scenes'] as $sceneRef) {
                 $sceneObj = $this->getReference($sceneRef, Scene::class);

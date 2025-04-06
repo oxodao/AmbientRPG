@@ -7,7 +7,7 @@ import { useAppProps } from "../context";
 import Character from "../sdk/responses/character";
 import PlayerDisplayList from "../components/viewer/PlayerDisplayList";
 
-export default function ViewerPage({theme}: {theme: string}) {
+export default function ViewerPage({ theme }: { theme: string }) {
     const { sdk, campaign, backgroundDuration, loadedImages } = useAppProps();
     const [backgrounds, setBackgrounds] = useState<Image[]>([]);
 
@@ -69,18 +69,21 @@ export default function ViewerPage({theme}: {theme: string}) {
             />
         }
 
-        <div className="displayedImages">
-            {
-                ...Object
-                    .values(loadedImages)
-                    .map(x => <img
-                        src={x.url}
-                        alt={x.name}
-                        key={x.iri}
-                    />)
-            }
+        {
+            Object.values(loadedImages).length > 0
+            && <div className="displayedImages">
+                {
+                    ...Object
+                        .values(loadedImages)
+                        .map(x => <img
+                            src={x.url}
+                            alt={x.name}
+                            key={x.iri}
+                        />)
+                }
+            </div>
+        }
 
-            <PlayerDisplayList characters={players} />
-        </div>
+        <PlayerDisplayList characters={players} />
     </div>
 }

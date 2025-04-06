@@ -1,11 +1,22 @@
+@font-face {
+    font-family: 'FloridaProject';
+    src: url('/assets/fallout/florida_project.ttf');
+}
+
 .fallout {
-    --fallout-blue: #326886;
+    --fallout-blue: #447AB9;
     --fallout-green: #13FF17;
     --fallout-darkgreen: #0d400d;
+    --fallout-goldish: #fef265;
 
     background-color: var(--fallout-blue);
 
     &.waitingscreen {
+        h1 {
+            color: var(--fallout-green);
+            text-shadow: 0 0 10px var(--fallout-green);
+        }
+
         background: url('/assets/fallout/background.jpg');
         background-color: black;
         background-position: center;
@@ -30,6 +41,19 @@
         }
     }
 
+    &.viewer {
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 1em;
+            width: 300px;
+            height: 446px;
+            background-image: url('/assets/fallout/vaultboy.png');
+            background-repeat: no-repeat;
+        }
+    }
+
     .a,
     .button {
         background: transparent;
@@ -44,6 +68,73 @@
             background-color: var(--fallout-green);
             color: #001900;
         }
+    }
+
+    .playerDisplay {
+        min-width: 10em;
+        position: relative;
+        padding: 5px 15px 25px 15px;
+        background-color: var(--fallout-goldish);
+        box-shadow: none;
+        border-radius: 0;
+
+        p {
+            color: black;
+        }
+
+        .character_name {
+            font-family: 'FloridaProject';
+            font-weight: bold;
+        }
+
+        .character_class {
+            text-align: left;
+        }
+
+        .player_name {
+            margin-top: .25em;
+            font-style: italic;
+        }
+
+
+        &::after {
+            content: '';
+            position: absolute;
+
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            height: 15px;
+
+            box-shadow: 0 0 2px black;
+
+            background-image: repeating-linear-gradient(45deg,
+                    #000,
+                    #000 10px,
+                    #FFC200 10px,
+                    #FFC200 20px);
+            border-top: 1px solid black;
+            border-radius: 0;
+        }
+
+        clip-path: polygon(0 0,
+            calc(100% - 15px) 0,
+            100% 100%,
+            15px 100%);
+    }
+
+    .bgImage {
+        box-shadow: 0 0 20px var(--fallout-green);
+        border: 4px solid var(--fallout-green);
+        border-radius: 8px;
+    }
+
+    .displayedImages {
+        background: rgba(black, .7);
+        box-shadow: 0 0 20px black;
+        backdrop-filter: blur(2px);
+        border-radius: 8px;
     }
 
     .stopwatch-container {

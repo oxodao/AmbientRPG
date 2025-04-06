@@ -39,6 +39,13 @@ class CharacterFixtures extends Fixture implements DependentFixtureInterface
                 ['name' => 'Redeye', 'class' => 'Netrunner', 'playedBy' => 'Paul'],
                 ['name' => 'Grease', 'class' => 'Fixer', 'playedBy' => 'Sophie'],
             ],
+            'campaign_5' => [
+                ['name' => 'Augusta', 'class' => 'Habitante d\'abri', 'playedBy' => 'Juliette R.'],
+                ['name' => 'Hazel', 'class' => 'Initié de la confrérie', 'playedBy' => 'Juliette H.'],
+                ['name' => 'Joyeux', 'class' => 'Survivant', 'playedBy' => 'Antoine'],
+                ['name' => 'Marvin', 'class' => 'Mister Handy', 'playedBy' => 'Coralie'],
+                ['name' => 'Vieux Colosse', 'class' => 'Supermutant', 'playedBy' => 'Nathan'],
+            ],
         ];
 
         $npcs = [
