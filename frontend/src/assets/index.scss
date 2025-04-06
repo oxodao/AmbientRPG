@@ -1,3 +1,5 @@
+@use 'themes';
+
 * {
     box-sizing: border-box;
 }
@@ -14,6 +16,9 @@ html, body, #root {
     left: 0;
     right: 0;
     bottom: 0;
+    font-family: 'Open Sans';
+
+    background-color: #777777;
 }
 
 .fullsize {
@@ -33,11 +38,34 @@ html, body, #root {
     overflow-y: auto;
 }
 
+.waitingscreen {
+    display: flex;
+    flex-direction: column;
+
+    > h1 {
+        // @TODO: Set font & text color
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: 20em;
+        text-align: center;
+    }
+}
+
 .bgImage {
     width: 90%;
     height: 90%;
     object-fit: cover;
 }
+
+.playerDisplay {
+    background-color: #000;
+    border-radius: 0 0 1em 1em;
+    box-shadow: 0 0 5px #000;
+  }
 
 .displayedImages {
     position: absolute;
@@ -207,7 +235,66 @@ html, body, #root {
 .playerDisplay {
     margin: 0;
     padding: 0;
-    background: red;
+    background: back;
+    color: white;
     padding: .5em;
     min-width: 8em;
+}
+
+.button, .a {
+    margin: 1em;
+    padding: 1em 2em;
+    background: #333333;
+    color: #fefefe;
+    text-decoration: none;
+    border: 2px solid #888;
+    border-radius: 1em;
+    box-shadow: 0 0 5px black;
+}
+
+.stopwatch-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: .5em;
+
+    margin-right: 1em;
+
+    .sw-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: .5em;
+
+        button {
+            font-size: .7rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: white;
+            color: black;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 0 5px black;
+        }
+
+        button:hover {
+            background-color: #111;
+            color: white;
+        }
+    }
+
+    .display {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 2rem;
+        color: white;
+        background: #111;
+        padding: 3px;
+        border-radius: 10px;
+        border: 4px solid white;
+        text-shadow: 0 0 10px white;
+        display: inline-block;
+        min-width: 200px;
+        text-align: center;
+    }
 }

@@ -7,7 +7,7 @@ import { useAppProps } from "../context";
 import Character from "../sdk/responses/character";
 import PlayerDisplayList from "../components/viewer/PlayerDisplayList";
 
-export default function ViewerPage() {
+export default function ViewerPage({theme}: {theme: string}) {
     const { sdk, campaign, backgroundDuration, loadedImages } = useAppProps();
     const [backgrounds, setBackgrounds] = useState<Image[]>([]);
 
@@ -57,7 +57,7 @@ export default function ViewerPage() {
         return () => clearInterval(timer);
     }, [backgrounds, backgroundDuration]);
 
-    return <div className="fullsize viewer">
+    return <div className={`fullsize viewer ${theme}`}>
         {!campaign && <h1>En attente du MJ...</h1>}
 
         {

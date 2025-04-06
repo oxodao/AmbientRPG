@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, Select, Stack, TextField, Typography } from "@mui/material";
 import Campaign from "../../sdk/responses/campaign"
 import { useAppProps } from "../../context";
 import { enqueueSnackbar } from "notistack";
@@ -56,17 +56,28 @@ export default function CampaignEditor({ campaign, open, close, refreshCampains 
             {campaign && <DialogTitle>Modification de {campaign?.name}</DialogTitle>}
             {!campaign && <DialogTitle>Créer une campagne</DialogTitle>}
 
-            <TextField
-                autoFocus
-                required
-                fullWidth
-                name="name"
-                margin="dense"
-                label="Name"
-                variant="standard"
-                defaultValue={campaign?.name ?? ''}
-            />
+            <Stack direction="column" gap={2}>
+                <TextField
+                    autoFocus
+                    required
+                    fullWidth
+                    name="name"
+                    margin="dense"
+                    label="Name"
+                    variant="standard"
+                    defaultValue={campaign?.name ?? ''}
+                />
 
+                <Stack direction="row" alignItems="center" gap={4}>
+                    <Typography>Type de jeu: </Typography>
+                    <Select name="gameType" defaultValue={campaign?.gameType ?? 'generic'} style={{flex: 1}}>
+                        <MenuItem value="cyberpunk">Cyberpunk RED</MenuItem>
+                        <MenuItem value="fallout">Fallout</MenuItem>
+                        <MenuItem value="dnd">Dungeon & Dragons</MenuItem>
+                        <MenuItem value="generic">Generic</MenuItem>
+                    </Select>
+                </Stack>
+            </Stack>
         </DialogContent>
 
         <DialogActions>

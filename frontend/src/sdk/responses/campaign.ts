@@ -10,11 +10,14 @@ import Soundtrack from "./soundtrack";
  * the search query
  */
 
+export type GameType = 'cyberpunk' | 'fallout' | 'dnd' | 'generic';
+
 export default class Campaign {
     public iri: string;
 
     public id: number;
     public name: string;
+    public gameType: GameType;
     public notes: string;
 
     public images: Image[];
@@ -29,6 +32,7 @@ export default class Campaign {
         this.iri = data['@id'] ?? `/api/campaigns/${this.id}`;
         this.name = data['name'];
         this.notes = data['notes'];
+        this.gameType = data['gameType'];
 
         this.images = [];
         if (Object.keys(data).includes('images')) {

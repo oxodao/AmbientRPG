@@ -1,0 +1,70 @@
+.fallout {
+    --fallout-blue: #326886;
+    --fallout-green: #13FF17;
+    --fallout-darkgreen: #0d400d;
+
+    background-color: var(--fallout-blue);
+
+    &.waitingscreen {
+        background: url('/assets/fallout/background.jpg');
+        background-color: black;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+
+        align-items: start;
+        padding-left: 10em;
+    }
+
+    .menu {
+        margin-right: 50em;
+        border-top: 4px solid var(--fallout-green);
+        border-bottom: 4px solid var(--fallout-green);
+        background: rgba(#0d400d, .7);
+        padding: 1em;
+
+        .a,
+        .button {
+            padding: .25em;
+            margin: 0;
+        }
+    }
+
+    .a,
+    .button {
+        background: transparent;
+        color: var(--fallout-green);
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
+        font-weight: bold;
+        text-align: left;
+
+        &:hover {
+            background-color: var(--fallout-green);
+            color: #001900;
+        }
+    }
+
+    .stopwatch-container {
+        .sw-buttons {
+            button {
+                background-color: var(--fallout-green);
+                color: black;
+                box-shadow: 0 0 10px var(--fallout-green);
+            }
+
+            button:hover {
+                background-color: var(--fallout-darkgreen);
+                box-shadow: 0 0 10px var(--fallout-darkgreen);
+            }
+        }
+
+        .display {
+            background: rgba(#0d400d, .7);
+            color: var(--fallout-green);
+            border: 4px solid var(--fallout-green);
+            text-shadow: 0 0 10px var(--fallout-green);
+        }
+    }
+}

@@ -8,6 +8,7 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
+use App\Enum\GameType;
 use App\Interface\HasCampaignInterface;
 use App\Repository\CampaignRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -62,6 +63,15 @@ class Campaign implements HasCampaignInterface
     ])]
     #[Assert\NotBlank]
     private string $name = '';
+
+    #[ORM\Column(type: Types::STRING, length: 255, nullable: false, enumType: GameType::class)]
+    #[Groups([
+        self::API_GET_ITEM,
+        self::API_GET_COLLECTION,
+        self::API_CREATE,
+        self::API_UPDATE,
+    ])]
+    private GameType $gameType;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     #[Groups([
@@ -132,6 +142,18 @@ class Campaign implements HasCampaignInterface
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getGameType(): GameType
+    {
+        return $this->gameType;
+    }
+
+    public function setGameType(GameType $gameType): self
+    {
+        $this->gameType = $gameType;
 
         return $this;
     }

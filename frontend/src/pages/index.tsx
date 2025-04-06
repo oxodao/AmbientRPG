@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 
-export default function IndexPage() {
-    return <div className="fullsize waitingscreen">
-        <Link to="/game-master" className="cp77-button">Game Master</Link>
-        <Link to="/viewer" className="cp77-button">Viewer</Link>
+export default function IndexPage({theme}: {theme: string}) {
+    return <div className={`fullsize waitingscreen ${theme}`}>
+        <h1>Ambient-RPG</h1>
+        <div className="menu">
+            <Link to="/game-master" className="button">Game Master</Link>
+            <Link to="/viewer" className="button">Viewer</Link>
+        </div>
     </div>
-
 }

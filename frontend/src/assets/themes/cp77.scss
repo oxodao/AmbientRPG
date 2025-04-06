@@ -1,0 +1,415 @@
+:root {
+  --glitched-duration: 0.9s;
+}
+
+#root .cyberpunk {
+
+  &.viewer,
+  &.waitingscreen {
+    background-color: #f9f002;
+  }
+
+  &.gm {
+    background: linear-gradient(146deg, rgba(53, 18, 24, 1) 0%, rgba(43, 16, 22, 1) 13%, rgba(8, 8, 13, 1) 100%);
+  }
+
+  .topbar {
+    background: transparent !important;
+    position: relative;
+
+    h1 {
+      color: #2dffff;
+      text-shadow: 0 0 3px #22cbcb;
+    }
+
+    .blueGlow {
+      color: #2dffff;
+      text-shadow: 0 0 3px #22cbcb;
+    }
+
+    &::after {
+      position: absolute;
+      left: 1em;
+      right: 1em;
+      box-shadow: 0 0 5px 1px red;
+
+      height: 2px;
+      content: '';
+      bottom: 5px;
+      background: #ff5f57;
+    }
+  }
+
+  .button,
+  .a {
+    --background-color: #ff003c;
+    box-shadow: none;
+
+    display: block;
+    border: none;
+    border-radius: 0%;
+    font-size: 1.5rem;
+    line-height: 100%;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: "Advent Pro", arial;
+    padding: 35px 75px;
+    margin: 10px;
+    position: relative;
+    color: #fff;
+    border-right: 3px solid #8ae66e;
+    clip-path: polygon(-15px 0%,
+        calc(100% + 15px) 0%,
+        calc(100% + 15px) 100%,
+        20px 100%,
+        -15px calc(100% - 35px));
+    cursor: pointer;
+    background-color: var(--background-color);
+    outline: none;
+
+    text-decoration: none;
+  }
+
+  .button:hover,
+  .a:hover,
+  .button:focus,
+  .a:focus {
+    animation-name: hover;
+    animation-duration: var(--glitched-duration);
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+
+  .button.green,
+  .a.green {
+    --background-color: #446d44;
+  }
+
+  .button.purple,
+  .a.purple {
+    --background-color: purple;
+  }
+
+  .button.blue,
+  .a.blue {
+    --background-color: #136377;
+  }
+
+  .button:after,
+  .a:after {
+    content: "R-25";
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    right: 25px;
+    padding: 2px 2px 0px 2px;
+    font-size: 0.6rem;
+    line-height: 9px;
+    color: #000;
+    background-color: #f9f002;
+    border-left: 2px solid #8ae66e;
+  }
+
+  .button:hover:after,
+  .a:hover:after,
+  .button:focus:after,
+  .a:focus:after {
+    animation-name: hoverafter;
+    animation-duration: var(--glitched-duration);
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+
+  .button:before,
+  .a:before {
+    --outside: 4px;
+    content: "";
+    position: absolute;
+    display: none;
+    background-color: var(--background-color);
+    width: calc(100% + (var(--outside) * 2));
+    height: 12px;
+    top: 0px;
+    left: calc(0px - 1px - var(--outside));
+    border-left: 2px solid #8ae66e;
+    border-right: 2px solid #8ae66e;
+  }
+
+  .button:hover:before,
+  .a:hover:before,
+  .button:focus:before,
+  .a:focus:before {
+    display: block;
+    animation-name: hoverbefore;
+    animation-duration: var(--glitched-duration);
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+
+  @keyframes hover {
+    0% {
+      transform: skew(0deg);
+    }
+
+    60% {
+      transform: skew(0deg);
+    }
+
+    61% {
+      transform: skew(10deg);
+    }
+
+    70% {
+      transform: skew(10deg);
+    }
+
+    71% {
+      transform: skew(0deg);
+    }
+
+    100% {
+      transform: skew(0deg);
+    }
+  }
+
+  @keyframes hoverbefore {
+    0% {
+      display: none;
+      top: 0px;
+    }
+
+    10% {
+      display: none;
+      top: 0px;
+    }
+
+    11% {
+      display: block;
+      top: 10px;
+      left: calc(0px - 0px - var(--outside));
+    }
+
+    29% {
+      top: 10px;
+    }
+
+    30% {
+      display: none;
+      top: 0px;
+    }
+
+    50% {
+      display: none;
+      top: 0px;
+    }
+
+    51% {
+      display: block;
+      top: 55px;
+      filter: blur(1px);
+      height: 22px;
+    }
+
+    90% {
+      display: block;
+      top: 55px;
+      height: 22px;
+    }
+
+    91% {
+      filter: blur(0px);
+      display: none;
+      top: 0px;
+      height: 12px;
+    }
+
+    100% {
+      display: none;
+      top: 0px;
+    }
+  }
+
+  @keyframes hoverafter {
+    0% {
+      right: 45px;
+    }
+
+    10% {
+      right: 45px;
+    }
+
+    11% {
+      right: 35px;
+    }
+
+    20% {
+      transform: skew(0deg);
+    }
+
+    21% {
+      transform: skew(-10deg);
+    }
+
+    40% {
+      transform: skew(-10deg);
+    }
+
+    41% {
+      transform: skew(0deg);
+    }
+
+    49% {
+      right: 35px;
+    }
+
+    50% {
+      right: 55px;
+    }
+
+    60% {
+      right: 55px;
+    }
+
+    61% {
+      right: 35px;
+    }
+
+    70% {
+      transform: skew(0deg);
+    }
+
+    71% {
+      transform: skew(10deg);
+    }
+
+    80% {
+      transform: skew(10deg);
+    }
+
+    81% {
+      transform: skew(0deg);
+    }
+
+    100% {
+      right: 35px;
+    }
+  }
+
+  .topbar {
+    background-color: #00ff9f;
+  }
+
+  .playerDisplay {
+    background-color: #000 !important;
+
+    border-left: 5px solid #000;
+    border-right: 5px solid #000;
+    border-bottom: 10px solid #000;
+  }
+
+  .playerDisplay--0 {
+    clip-path: polygon(0 0,
+        /* Top left */
+        100% 0,
+        /* Top right */
+        100% calc(100% - 10px),
+        /* Bottom right */
+        calc(100% - 5px) calc(100% - 10px),
+        /* Notch Top right */
+        calc(100% - 15px) 100%,
+        /* Notch bottom right */
+        calc(100% - 65px) 100%,
+        /* Notch bottom left */
+        calc(100% - 75px) calc(100% - 10px),
+        /* Notch top left */
+        10px calc(100% - 10px),
+        /* Bottom left (angle bottom right) */
+        0 calc(100% - 20px)
+        /* Bottom left (angle top left)*/
+      );
+  }
+
+  .playerDisplay--1 {
+    clip-path: polygon(0 0,
+        /* Top left */
+        100% 0,
+        /* Top right */
+        100% calc(100% - 10px),
+        /* Bottom right */
+        calc(100% - 20px) calc(100% - 10px),
+        /* Notch Top right */
+        calc(100% - 30px) 100%,
+        /* Notch bottom right */
+        calc(5% + 15px) 100%,
+        /* Notch bottom left */
+        calc(5% + 5px) calc(100% - 10px),
+        /* Notch top left */
+        0 calc(100% - 10px)
+        /* Bottom left */
+      );
+  }
+
+  .playerDisplay--2 {
+    clip-path: polygon(0 0,
+        /* Top left */
+        100% 0,
+        /* Top right */
+        100% calc(100% - 10px),
+        /* Bottom right */
+        calc(100% - 15px) calc(100% - 10px),
+        /* Notch Top right */
+        calc(100% - 20px) calc(100% - 5px),
+        /* Notch semi-bottom top right */
+        calc(100% - 50px) calc(100% - 5px),
+        /* Notch semi-bottom bottom left */
+        calc(100% - 60px) 100%,
+        /* Notch semi-bottom bottom left */
+        calc(5% + 15px) 100%,
+        /* Notch bottom right */
+        calc(5% + 5px) calc(100% - 10px),
+        /* Notch top left */
+        0 calc(100% - 10px)
+        /* Bottom left */
+      );
+  }
+
+  .playerDisplay--3 {
+    clip-path: polygon(0 0,
+        /* Top left */
+        100% 0,
+        /* Top right */
+        100% calc(100% - 10px),
+        /* Bottom right */
+        80px calc(100% - 10px),
+        /* Notch Top right */
+        70px 100%,
+        /* Notch bottom right */
+        20px 100%,
+        /* Notch bottom left */
+        10px calc(100% - 10px),
+        /* Notch top left */
+        0 calc(100% - 10px)
+        /* Bottom left */
+      );
+  }
+
+  .stopwatch-container {
+    .sw-buttons button {
+      background-color: red;
+      color: white;
+      box-shadow: 0 0 10px red;
+
+      &:hover {
+        background-color: darkred;
+      }
+    }
+
+    .display {
+      color: red;
+      background: #111;
+      border: 4px solid red;
+      text-shadow: 0 0 10px red;
+    }
+  }
+}

@@ -3,7 +3,6 @@
  */
 
 import { useState, useRef, useEffect } from "react";
-import "../assets/stopwatch.scss";
 
 const Stopwatch: React.FC = () => {
   const [time, setTime] = useState<number>(0);
