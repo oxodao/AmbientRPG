@@ -42,7 +42,7 @@ Todos:
 - [x] Soundtrack
 - [x] Led strip FX
   - [x] zigbee2mqtt
-  - [ ] wled
+  - [x] wled
   - [ ] Usb-wired (Custom arduino firmware to develop)
 - [x] FX script API (e.g. put the lights red, trigger the combat begin sound effect, start the combat soundtrack)
     - [ ] UI editor tool (Currently is to be done in database)
