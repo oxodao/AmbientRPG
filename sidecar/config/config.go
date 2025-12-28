@@ -8,6 +8,11 @@ import (
 
 var GET Config
 
+type WLedDevice struct {
+	Name string `json:"name"`
+	Ip   string `json:"ip"`
+}
+
 type Config struct {
 	Server struct {
 		Url string `json:"url"`
@@ -18,6 +23,7 @@ type Config struct {
 		Username string `json:"username"`
 		Password string `json:"password"`
 	} `json:"mqtt"`
+	WLedDevices map[string]WLedDevice `json:"wled_devices"`
 }
 
 func LoadConfig() error {

@@ -7,5 +7,11 @@
         "port": 1883,
         "username": "ambientrpg",
         "password": ""
+    },
+    "wled_devices": {
+      "canap_ledstrip": {
+        "name": "Canap Ledstrip",
+        "ip": "192.168.14.140"
+      }
     }
 }
