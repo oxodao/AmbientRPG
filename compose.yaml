@@ -36,7 +36,7 @@ services:
     init: true
     user: "${UID:-1000}:${GID:-1000}"
     working_dir: '/app'
-    command: [ 'bash', '-c', '[ ! -d node_modules ] && npm install; npm run dev -- --host' ]
+    command: [ 'bash', '-c', '[ ! -d node_modules ] && npm install --legacy-peer-deps; npm run dev -- --host' ]
     volumes:
       - './frontend:/app'
     ports:

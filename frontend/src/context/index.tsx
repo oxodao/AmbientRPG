@@ -112,7 +112,7 @@ export default function AppProvider({ children }: { children: ReactNode }) {
                 return;
             }
 
-            let appliedState: any = { ...newState };
+            const appliedState = { ...newState };
 
             // @TODO: debug pourquoi ça pète tout
             // state.campaign est null à ce moment la

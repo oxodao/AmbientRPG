@@ -49,13 +49,13 @@ export default function CmdPalette({ dockApi }: { dockApi: DockviewApi }) {
                         dockApi: dockApi,
                         panelId: characterPanel,
                         character: x,
-                        refreshCharacters: async () => {},
+                        refreshCharacters: async () => { },
                     }
                 })
             }
         }));
     }
-    
+
     // Just so that eslint doesnt kill my whole family
     console.log(setPage, characters);
 
@@ -83,13 +83,21 @@ export default function CmdPalette({ dockApi }: { dockApi: DockviewApi }) {
                     }
                 },
                 {
-                    id: 'bestiary',
-                    children: 'Bestiaire',
-                },
-                {
-                    id: 'name_generator',
-                    children: 'Name generator',
-                },
+                    id: 'initiative',
+                    children: 'Initiative',
+                    onClick: () => {
+                        dockApi.addPanel({
+                            id: 'initiative',
+                            component: 'initiative',
+                            title: 'Initiative',
+                            floating: { width: 500, height: 320 },
+                            initialWidth: 500,
+                            initialHeight: 320,
+                            minimumWidth: 500,
+                            minimumHeight: 320,
+                        })
+                    }
+                }
             ]
         },
         /*

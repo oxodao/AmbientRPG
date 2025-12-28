@@ -8,6 +8,7 @@ import NotesEditor from "./notes_editor";
 import CmdPalette from "./command_palette";
 import { useState } from "react";
 import { Calculator } from "react-mac-calculator";
+import Initiative from "./tool/initiative";
 
 const CustomTab = (props: IDockviewPanelHeaderProps) => <DockviewDefaultTab
     onContextMenu={e => e.preventDefault()}
@@ -92,6 +93,7 @@ export default function GmViewer() {
                 characters: (props: IDockviewPanelProps) => <Characters dockProps={props} />,
                 character_viewer: (props: IDockviewPanelProps) => <CharacterViewer {...props.params} />,
                 calculator: () => <Calculator />,
+                initiative: () => <Initiative />
             }}
         />
 

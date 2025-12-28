@@ -5,7 +5,7 @@ FROM dunglas/frankenphp:1.4.2-php8.4.3 AS frankenphp_upstream
 FROM node:lts AS frontend
 
 COPY --link ./frontend /app
-RUN cd /app && npm install && npm run build
+RUN cd /app && npm install --legacy-peer-deps && npm run build
 
 # Sidecar intermediary image
 FROM golang:1.24.0-bookworm AS sidecar_builder

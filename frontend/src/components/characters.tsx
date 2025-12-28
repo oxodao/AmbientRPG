@@ -32,7 +32,7 @@ export default function Characters({ dockProps }: Props) {
     useAsyncEffect(refreshCharacters, [campaign, selectedScene]);
 
     const getSecondary = (x: Character) => {
-        let finalStr = [x.npc ? 'PNJ' : 'PJ'];
+        const finalStr = [x.npc ? 'PNJ' : 'PJ'];
 
         if (x.class.length > 0) {
             finalStr.push(x.class);
